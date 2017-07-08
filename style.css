@@ -1,0 +1,56 @@
+body {
+    overflow-x: hidden;
+}
+#head {
+    background-image: url('/scene.png');
+    background-color: #7bf2fd;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+    height: 100vh;
+}
+
+.large {
+    font-size: 110px;
+    color: #fff;
+    text-align: center;
+    margin: auto;
+}
+#navbar {
+    border-bottom: 3px solid #fff;
+    background: none;
+    height: 80px;
+    width: 110vw;
+}
+
+@keyframes sunRotate {
+    from {-ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Safari */
+    transform: rotate(0deg);}
+    to {-ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Safari */
+    transform: rotate(360deg);}
+}
+
+#sunAnim {
+    width: 200px;
+    height: 200px;
+    margin: 40px 0 0 80vw;
+    animation-name: sunRotate;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#signpost {
+    background-color: #b12d33;
+    width: 70vw;
+    height: auto;
+    margin: 10vh auto 0;
+}
+#bottomPost{
+    background-color: #a21e24;
+    width: 70vw;
+    margin: 3vh auto;
+    padding: 5px;
+}
