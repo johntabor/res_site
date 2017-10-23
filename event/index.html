@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Internal Tools | RES</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <style type="text/css">
+        p {
+            display:inline;
+        }
+        a {
+            margin-top:10px;
+        }
+        span {
+          font-size: 45px;
+          text-align: center;
+          font-family: Arial;
+        }
+        img {
+          width: 100px;
+          height: 100px;
+        }
+        #eventForm {
+            margin-top: 28vh;
+            text-align: center;
+        }
+        #checkUserForm input {
+            height: 60px;
+            width: 35vw;
+            border-radius: 2px;
+            border: 2px solid #c7c7c7;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+        #signUpIn {
+            width:18vw !important;
+            height:70px;
+            background-color:#E21936;
+            color:#fff;
+            border:none !important;
+            font-size:50px;
+            box-shadow: 2px 2px 4px #c7c7c7;
+        }
+        @media only screen and (max-width: 700px) {
+          #eventForm {
+            margin-top: 30vh;
+          }
+          img {
+            width: 200px;
+            height: 200px;
+          }
+          #checkUserForm input {
+            width: 90vw !important;
+            height: 70px;
+          }
+          #signUpIn {
+            width: 40vw !important;
+          }
+          [class*='col-'] {
+            width: 100vw;
+          }
+        }
+    </style>
+</head>
+<body>
+  <div id="eventForm">
+      <img src="../icon.png" alt="logo" style="padding-bottom:12px;">
+      <br>
+      <form action="javascript:signUpUser()" id="checkUserForm">
+          <input type="email" placeholder="yourname@email.com" name="cEmail" required>
+          <!--<label id="fbToggle">Can we add you on Facebook? <input type="checkbox" name="fbToggle" style="width:12px;height:12px"></label>-->
+          <br><br>
+          <input type="submit" value="Sign Up" id="signUpIn">
+      </form>
+      <span id="success">Thanks! You're response has been recorded. Enjoy the event!</span>
+  </div>
+  
+  
+<script type="text/javascript">
+  /*global firebase,$,jQuery*/
+  var config = {
+    apiKey: "AIzaSyBlSw_9_7ZULMKT62cQrl4zbgz6_oSQi1Q",
+    authDomain: "rutrep-27e19.firebaseapp.com",
+    databaseURL: "https://rutrep-27e19.firebaseio.com/",
+    projectId: "rutrep-27e19",
+    storageBucket: "rutrep-27e19.appspot.com",
+  };
+  firebase.initializeApp(config);
+  const sdbRef = firebase.database().ref('/signups');
+  const dbRef = firebase.database().ref('/olds');
+  const authy = firebase.auth();
+  $('#success').hide();
+  
+  function getData() {
+      dbRef.once('value', (snapshot) => {
+      var table = snapshot.val();
+      snapshot.forEach(childSnap => {
+        var val = childSnap.val().emailAddress;
+        //console.log(val);
+        if($('input[name=cEmail]').val() == val) {
+            $('#signUpIn').prop('value', 'Sign In');
+            $('#checkUserForm').prop('action', "javascript:activateUser('r')")
+        }
+      });
+      });
+  }
+  
+  $('input[name=cEmail]').on('keyup', event => {
+     getData();
+  });
+  
+  function activateUser(state) {
+      var uEmail = $('input[name=cEmail]').val();
+      var d = new Date();
+      const logRef = firebase.database().ref('/events/'+d.toDateString());
+      var key = logRef.push().key;
+      logRef.child(key).set({
+        emailAddress: uEmail,
+        state: state
+      });
+      $('#checkUserForm').hide();
+      $('#success').show();
+      //window.setTimeout(refresh,5000);
+  }
+  
+  function signUpUser() {
+    $('<br><input type="text" placeholder="First Name" name="cFirstName" required><br><input type="text" placeholder="Last Name" name="cLastName" style="margin-left:px;" required>').insertAfter($('input[name=cEmail]'));
+    $('#checkUserForm').prop('action', "javascript:signupSubmit()");
+  }
+  
+  function signupSubmit() {
+    var key = dbRef.push().key;
+    sdbRef.child(key).set({
+      firstName: $('input[name=cFirstName]').val(),
+      lastName: $('input[name=cLastName]').val(),
+      emailAddress: $('input[name=cEmail]').val(),
+      signupDate: Date()
+    });
+    activateUser('n');
+    $('#checkUserForm').hide();
+    $('#success').show();
+    //window.setTimeout(refresh,5000);
+  }
+  
+  function refresh() {
+    $('#success').fadeOut(1000, e => {
+      $('input[name=cFirstName]').remove();
+      $('input[name=cLastName]').remove();
+      $('#checkUserForm').prop('action', "javascript:signUpUser()");
+      $('input[name=cEmail]').prop('value', "");
+      $('#checkUserForm').fadeIn(1000);
+    });
+  }
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-28810488-8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-28810488-8');
+</script>
+  </body>
+  </html>
+
+
+
+

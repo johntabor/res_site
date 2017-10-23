@@ -1,0 +1,41 @@
+{
+  "hosting": {
+    "public": "/",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "redirects" : [
+      {
+        "source" : "/events",
+        "destination" : "/event",
+        "type" : "301"
+      },
+      {
+        "source" : "/EVENT",
+        "destination" : "/event",
+        "type" : "301"
+      }
+      ]
+    "headers" : [ 
+      {
+        "source" : "**/*.@(csv|tsv|xlsx)",
+        "headers" : [ {
+          "key" : "Content-Type",
+          "value" : "application/octet-stream"
+        },
+        {
+          "key" : "X-Content-Type-Options",
+          "value" : "nosniff"
+        }
+      ]
+    } ]
+  }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Internal Tools | RES</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+
+    <style type="text/css">
+        p, form {
+            display:inline;
+        }
+        form::after {
+          content: ' ';
+        }
+        a {
+            margin-top:10px;
+        }
+        span {
+          font-size: 45px;
+          text-align: center;
+          font-family: Arial;
+        }
+        #eventForm {
+            margin-top: 28vh;
+            text-align: center;
+        }
+        #checkUserForm input {
+            height: 60px;
+            width: 35vw;
+            border-radius: 2px;
+            border: 2px solid #c7c7c7;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+        #signUpIn {
+            width:18vw !important;
+            height:70px;
+            background-color:#E21936;
+            color:#fff;
+            border:none !important;
+            font-size:50px;
+            box-shadow: 2px 2px 4px #c7c7c7;
+        }
+
+    </style>
+</head>
+<body>
+  
+  <form action="javascript:loginNow()" id="loginForm">
+    <p>Login with supplied credentials below to access tool</p><br><br>
+    <input type="email" name="email" placeholder="email" />
+    <input type="password" name="pwd" placeholder="password" />
+    <input type="submit" value="Submit" />
+  </form>
+  <p id="login_error" style="display:none;">Invalid credentials</p>
+  <div id="manager">
+      <button id="logOut" onClick="firebase.auth().signOut()">Sign Out</button>
+      <!-- For now just log using date as event id <button id="logOut" onClick="//show add event form">Add New Event</button>
+      <button id="logOut" onClick="//show attendance download links (use extract template)">View Event Attendance</button>-->
+      <button id="goToLogger" onClick="window.location = '/event';">Log Event Attendance</button><br><br>
+      <p>Download data:</p>
+      <div id="dd">
+        <!--items-->
+      </div>
+  </div>
+  
+<script type="text/javascript">
+  /*global firebase,$,jQuery*/
+  var config = {
+    apiKey: "AIzaSyBlSw_9_7ZULMKT62cQrl4zbgz6_oSQi1Q",
+    authDomain: "rutrep-27e19.firebaseapp.com",
+    databaseURL: "https://rutrep-27e19.firebaseio.com/",
+    projectId: "rutrep-27e19",
+    storageBucket: "rutrep-27e19.appspot.com",
+  };
+  firebase.initializeApp(config);
+  const dbRef = firebase.database().ref('/events');
+  const authy = firebase.auth();
+
+  function loginNow() {
+    var email = $('input[name=email]').val();
+    var password = $('input[type=password][name=pwd]').val();
+    authy.signInWithEmailAndPassword(email, password).catch(function(error) {
+      $('#login_error').css({'display':'block'});
+    });
+  }
+  authy.onAuthStateChanged(user => {
+      if(user){
+        $('#manager').show();
+        $('#loginForm').hide();
+      }
+      else {
+        $('#manager').hide();
+      }
+  });
+  
+  //var nodeLoad = new Promise ((resolve, reject) => {
+    dbRef.once('value', snapshot => {
+      snapshot.forEach(child => {
+        $('#dd').append('<form action="extract.php" id="payloadForm" method="POST"><input type="hidden" name="package" value="'+encodeURIComponent(JSON.stringify(child))+'" /><input type="hidden" name="dKey" value="'+child.key+'" /><input type="submit" value="'+child.key+'" /></form>');
+      });
+      //resolve();
+    });
+  //});
+  
+  /*nodeLoad.then(res => {
+      $('#payloadForm').submit(event => {
+      event.preventDefault();
+      dbRef.once('value', (snapshot) => {
+        var table = snapshot.val();
+        table = encodeURIComponent(JSON.stringify(table));
+        console.log(table);
+        var dataPayload = document.createElement('input');
+        dataPayload.setAttribute('type', 'hidden');
+        dataPayload.setAttribute('name', 'package');
+        dataPayload.setAttribute('value', table);
+        $('#payloadForm').append(dataPayload);
+        //$('#payloadForm').submit();
+        });
+    });
+  });*/
+</script>
+  </body>
+  </html>
+
+
+
+

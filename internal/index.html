@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Internal Tools | RES</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <style type="text/css">p{display:inline;}a{margin-top:10px;}</style>
+</head>
+<body>
+  <p>These tools are for internal use by RES e-board. Access is by authorized users only.</p><br><br><br>
+  <a href="people.html">People Manager</a><p> - Add/delete users, manage links, change website profile details & pictures</p><br><br>
+  <a href="signups.html">Download New Signups</a><p> - Get .csv of new signups from the website form</p><br><br>
+  <a href="meetings.html">Log Attendance</a><p> - Log meeting attendance and upload logs</p><br><br>
+  <a href="events.html">Manage Events</a><p> - Add new members in person, sign in attendees, speaker links</p><br><br>
+
+<script type="text/javascript">
+  /*global firebase,$*/
+  var config = {
+    apiKey: "AIzaSyBlSw_9_7ZULMKT62cQrl4zbgz6_oSQi1Q",
+    authDomain: "rutrep-27e19.firebaseapp.com",
+    databaseURL: "https://rutrep-27e19.firebaseio.com/",
+    projectId: "rutrep-27e19",
+    storageBucket: "rutrep-27e19.appspot.com",
+  };
+  firebase.initializeApp(config);
+  const dbRef = firebase.database().ref('/signups');
+  const oldRef = firebase.database().ref('/olds');
+  const authy = firebase.auth();
+
+</script>
+  </body>
+  </html>
+
+
+
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Grab</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+</head>
+<body>
+  <p>This tool downloads NEW SIGNUPS ONLY from the RES signup form. Only users on access list can retrieve data.</p>
+  <p>For old signups, please contact the <a href="http://linkedin.com/in/nlusskin">admin</a>.</p>
+  <p>Login below using credentials. Click 'Download Now' to download .csv</p>
+  <p>Depending on number of signups, file may take some time to download. Be patient.</p>
+  <p>Once you click download, returned entries will disapper from the database.</p>
+  <form action="javascript:loginNow()" id="loginForm">
+    <input type="email" name="email" placeholder="email" />
+    <input type="password" name="pwd" placeholder="password" />
+    <input type="submit" value="Submit" />
+  </form>
+  <form action="extract.php" id="payloadForm" method="POST">
+    <input type="submit" value="Download Latest" />
+  </form>
+  <button id="logOut" onClick="firebase.auth().signOut()">Sign Out</button>
+  <p id="login_error" style="display:none;">Invalid credentials</p>
+
+<script type="text/javascript">
+  /*global firebase,$*/
+  var config = {
+    apiKey: "AIzaSyBlSw_9_7ZULMKT62cQrl4zbgz6_oSQi1Q",
+    authDomain: "rutrep-27e19.firebaseapp.com",
+    databaseURL: "https://rutrep-27e19.firebaseio.com/",
+    projectId: "rutrep-27e19",
+    storageBucket: "rutrep-27e19.appspot.com",
+  };
+  firebase.initializeApp(config);
+  const dbRef = firebase.database().ref('/signups');
+  const oldRef = firebase.database().ref('/olds');
+  const authy = firebase.auth();
+  const form = $('#payloadForm');
+  var table;
+  
+  authy.onAuthStateChanged(user => {
+      if(user){
+        $('#logOut').show();
+        $('#payloadForm').show();
+      }
+      else {
+        $('#logOut').hide();
+        $('#payloadForm').hide();
+      }
+  });
+  
+  function loginNow() {
+    var email = $('input[name=email]').val();
+    var password = $('input[type=password][name=pwd]').val();
+    authy.signInWithEmailAndPassword(email, password).catch(function(error) {
+      $('#login_error').css({'display':'block'});
+    });
+  }
+    
+   $('#payloadForm').on('submit', async (event) => {
+     //dbRef.remove();
+  });
+  
+  function getData() {
+      dbRef.once('value', (snapshot) => {
+      table = snapshot.val();
+      table = encodeURIComponent(JSON.stringify(table));
+      console.log(table);
+      var dataPayload = document.createElement('input');
+      dataPayload.setAttribute('type', 'hidden');
+      dataPayload.setAttribute('name', 'payload');
+      dataPayload.setAttribute('value', table);
+      form.append(dataPayload);
+      snapshot.forEach(childSnap => {
+        var key = childSnap.key;
+        var val = childSnap.val();
+        oldRef.child(key).set(val);
+      });
+      });
+  }
+  getData();
+  authy.onAuthStateChanged(state => {getData();});
+</script>
+  </body>
+  </html>
+
+
+
+
