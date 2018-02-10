@@ -1,0 +1,68 @@
+@font-face {
+    font-family: Avenir;
+    src: url('avenir.otf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
+}
+h1 {
+    font-family: Avenir;
+}
+
+#s1 {
+    background: url('rise.jpg') no-repeat fixed;
+    background-size: cover;
+    text-align: center;
+    max-height: 100vh;
+    .cover {
+        background-color: darkslategrey;
+        width: 30vw;
+        height: 100vh;
+        opacity: 0.95;
+        -webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+    }
+    h1 {
+        color: #fff;
+        padding-top: 5vh;
+    }
+    img {
+        width: 15vw;
+        padding-top: 25vh;
+    }
+    a {
+        text-decoration: none;
+        text-decoration-color: white;
+        :hover {
+            color: darkslategray;
+            background-color: white;
+        }
+        h1 {
+            padding: 5px;
+            
+            text-align: left;
+            font-size: 20px;
+        }
+    }
+}
+
+#s2 {
+    background: #c7c7c7;
+    -webkit-clip-path: polygon(0 9%, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    opacity: 0.85;
+    margin-top: -10vh;
+    h1 {
+        padding-top: 15vh;
+        color: black;
+        font-size: 5vw;
+    }
+}

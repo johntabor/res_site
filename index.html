@@ -1,283 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rutgers Entrepreneurial Society</title>
     <meta property="og:title" content="Rutgers Entrepreneurial Society" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.*_*.*" />
-    <meta property="og:image" content="/**.*" />
+    <meta property="og:url" content="http://www.rutrep.com" />
+    <meta property="og:image" content="/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="icon.png">
     <meta name="description" content="The Rutgers Entrepreneurial Society aims to bring value to the Rutgers ecosystem by providing access to speaker series, conferences, people, and capital for entrepreneuers." />
+    <link rel="icon" type="image/png" href="icon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28810488-8"></script>
+    <script src="res18.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-    
   </head>
   <body>
-    <div id="navbar">
-      <div class="row" >
-        <div class="col-1" style="background-color:#fff;height:80px;border-bottom:1px solid #000;"><img src="icon.png" style="height:70px;width:60px;padding-top:12px;"></div>
-        <div class="col-2 navLinks"><a href="#home">Home</a></div>
-        <div class="col-2 navLinks"><a href="#people">People</a></div>
-        <div class="col-2 navLinks"><a href="#activity">Activity</a></div>
-        <div class="col-2 navLinks"><a href="#sponsors">Sponsors</a></div>
-        <div class="col-2 navLinks"><a href="#signup">Signup</a></div>
+    <div id="s1">
+      <div class="cover">
+        <a href="#"><h1>Home</h1></a>
+        <a href="#"><h1>What We Do</h1></a>
+        <a href="#"><h1>Who We Are</h1></a>
+        <a href="#"><h1>Our Sponsors</h1></a>
+        <img src="icon_blank.png" />
+        <h1>Welcome to RES</h1>
+      </div>
+
+      <div id="s2">
+        <h1>What We Do</h1>
+        <h1>Events</h1><br>
+        <h1>Speakers</h1><br>
+        <h1>RISE</h1>
       </div>
     </div>
-    <div id="home">
-      <div class="row">
-        <div class="col-12" id="title">
-          <h1 style="font-size: 70px;margin-left:5vw;margin-bottom:5px;"><span style="color:red;">R</span>utgers <span style="color:blue;">E</span>ntrepreneurial <span style="color:green;">S</span>ociety</h1>
-          <h3 style="font-style:italic;font-size:35px;margin-left:5vw;margin-top:0px;">The one stop shop for entrepreneurs at Rutgers</h3>
-          <a href="#signup"><button id="joinUsJump">Join Us</button></a>
-        </div>
-      </div>
-          <div id="subHome">
-            <div class="row">
-              <div class="col-6" style="padding:7vw;">
-              <h2 style="font-family:OpenSans;font-size:35px;margin-top: 20px;">WE ARE A COMMUNITY OF</h2>
-              <h1 style="font-family:AvLt;">INNOVATORS</h1>
-              <h1 style="font-family:AvLt;">CREATIVES</h1>
-              <h1 style="font-family:AvLt;">& FOUNDERS</h1>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-      <div id="people">
-          <h2 style="margin-top:10px;">Meet the RESidents</h2>
-          <div class="row">  
-            <div class="col-6">
-              <div class="profile">
-                <img class="profilePic" style="width:20vw;height:20vw;" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Fabhivyas.png?alt=media">
-                <h3>President</h3>
-                <h4>Abhi Vyas</h4>
-              </div>
-            </div>
-            <div class="col-6">
-                <div class="profile">
-                  <img class="profilePic" style="width:20vw;height:20vw;" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Fammaarahmed.png?alt=media">
-                  <h3>Vice President</h3>
-                  <h4>Ammaar Ahmed</h4>
-                </div>
-              </div>
-            </div>
-          <div class="row" style="margin-bottom:60px;">
-            <h3 style="margin-top:30px;font-size:50px;">Directors</h3>
-            <div class="col-3">
-              <div class="profile">
-                <img class="profilePic profilePicDir" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Fnicklusskin.png?alt=media">
-                <h3>Technology</h3>
-                <h4>Nick Lusskin</h4>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="profile">
-                <img class="profilePic profilePicDir" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Fjhanvivirani.png?alt=media">
-                <h3>Internal Structures</h3>
-                <h4>Jhanvi Virani</h4>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="profile">
-                <img class="profilePic profilePicDir" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Fpriyankabansal.png?alt=media">
-                <h3>Marketing</h3>
-                <h4>Priyanka Bansal</h4>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="profile">
-                <img class="profilePic profilePicDir" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Fbrettbyles.png?alt=media">
-                <h3>Treasurer</h3>
-                <h4>Brett Byles</h4>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-4">
-              <div class="profile">
-                <img class="profilePic profilePicDir" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Fnikhitkethidi.png?alt=media">
-                <h3>Events</h3>
-                <h4>Nikhit Kethidi</h4>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="profile">
-                <img class="profilePic profilePicDir" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Frahulchakraborty.png?alt=media">
-                <h3>Outreach</h3>
-                <h4>Rahul Chakraborty</h4>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="profile">
-                <img class="profilePic profilePicDir" src="https://firebasestorage.googleapis.com/v0/b/rutrep-27e19.appspot.com/o/people%2Fpranavprakash.png?alt=media">
-                <h3>Creative</h3>
-                <h4>Pranav Prakash</h4>
-              </div>
-            </div>
-          </div>
-          
-          <div class="row">
-            <h3 style="margin-top:30px;margin-bottom:30px;font-size:50px;">Associates</h3>
-            <div class="col-3">
-              <h3 class="associate">Tiger Li<br><span class="pTitle">Technology</span></h3>
-            </div>
-            <div class="col-3">
-              <h3 class="associate">Sanika Kadam<br><span class="pTitle">Marketing</span></h3>
-            </div>
-            <div class="col-3">
-              <h3 class="associate">Gianna Midure<br><span class="pTitle">Marketing</span></h3>
-            </div>
-            <div class="col-3">
-              <h3 class="associate">Ryan Divins<br><span class="pTitle">Marketing</span></h3>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-3">
-              <h3 class="associate">Barza Fayazi-Azad<br><span class="pTitle">Events</span></h3>
-            </div>
-            <div class="col-3">
-              <h3 class="associate">Irum Yasmin<br><span class="pTitle">Creative</span></h3>
-            </div>
-            <div class="col-3">
-              <h3 class="associate">Jeremy Wai<br><span class="pTitle">Marketing</span></h3>
-            </div>
-            <div class="col-3">
-              <h3 class="associate">And You!<br><span class="pTitle">...</span></h3>
-            </div>
-          </div>
-      </div>
-      
-      <div id="activity">
-        <h1 style="margin-top:10px;color:#fff;">&nbsp;What We Do</h1>
-        <div class="row">
-          <div class="col-4 activityBox">
-            <iframe width="100%" height="195" src="https://www.youtube.com/embed/OURwp6Lz8TE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-            <h3>Meetings</h3>
-            <p>Here's a trailer that our team made last semester. This gives you a sense of what it's like to be in RES and our attend our meetings. Our favorite quote: "You can't get this anywhere else" - Marquez Ruiz, RES Member</p>
-            <p></p>
-          </div>
-          <div class="col-4 activityBox">
-            <img src="imgs/riseconfgroup.jpg" alt="res_photo" />
-            <h3>RISE Conference</h3>
-            <p>RES put on its second annual Innovation and Startup Expedition this spring, drawing speakers and students including Forbes '30 Under 30' founders</p>
-            <p></p>
-          </div>
-          <div class="col-4 activityBox">
-            <img src="imgs/rw_demoday.jpg" alt="res_photo" />
-            <h3>Demo Day</h3>
-            <p>RES members after a trip to New York to participate in Ramenworks' Demo Day, a pitch competition in front of some of the city's top investors</p>
-          </div>
-        </div>
-      </div>
-      
-      <div id="sponsors">
-        <div class="row" style="width:70vw; margin:0 auto;text-align:center;">
-          <h1 style="color:#b12d33;">Friends of RES</h1>
-          <div class="col-2"><img src="imgs/nvec.png" alt="sponsor" /></div>
-          <div class="col-2"><img src="imgs/rutgersc.png" alt="sponsor" /></div>
-          <div class="col-2"><img src="imgs/ruvcc.png" alt="sponsor" /></div>
-          <div class="col-2"><img src="imgs/rbgac.png" alt="sponsor" /></div>
-          <div class="col-2"><img src="imgs/enactusc.png" alt="sponsor" /></div>
-          <div class="col-2"><img src="imgs/juicetankc.png" alt="sponsor" /></div>
-        </div>
-        <div class="row" style="width:70vw; margin:0 auto;text-align:center;">
-          <div class="col-3"></div>
-          <div class="col-2"><img src="imgs/hackruc.png" alt="sponsor" /></div>
-          <div class="col-2"><img src="imgs/njm.png" alt="sponsor" /></div>
-          <div class="col-2"><img src="imgs/rumadc.png" alt="sponsor" /></div>
-          <div class="col-3"></div>
-        </div>
-      </div>
-      
-      <div id="signup">
-          <div class="row">
-            <h1>Sign Up</h1>
-            <h3>If you want to be great, you better get started.</h3>
-          </div>
-          <div class="row">
-            <div class="col-5">
-              <form action="javascript:signup()" id="signupForm">
-                <input type="text" placeholder="First Name" name="fname" required>
-                <input type="text" placeholder="Last Name" name="lname" required>
-                <input type="email" placeholder="yourname@email.com" name="email" required>
-                <input type="submit" value="Start Your Journey" />
-              </form>
-              <h3 id="completeSubmit">Thanks for signing up! We'll be in touch soon</h3>
-            </div>
-            <div class="col-5">
-              <h3>Connect With Us</h3>
-              <a href="https://www.facebook.com/RUEntrepreneur/"><img src="imgs/facebook.png" /></a>
-              <a href="https://twitter.com/ruentrepreneur"><img src="imgs/twitter.png" /></a>
-              <a href="https://www.linkedin.com/company/rutgersentrepreneurialsociety"><img src="imgs/linkedin.png" /></a>
-            </div>
-          </div>
-      </div>
-      <div id="footer">
-        <div class="row">
-          <div class="col-10" style="padding-left:10px;">
-            <p>2017 RES</p>
-            <p>Built with 💕 by <a href="http://linkedin.com/in/nlusskin">Nick</a></p>
-          </div>
-        </div>
-      </div>
-      
-  <script type="text/javascript">
-  $('#completeSubmit').hide();
-    $(window).scroll(function(){
-      /*global $*/
-        var offset = $(this).scrollTop();
-        if(offset > 0){
-            //$('#navbar').css({backgroundColor:'#fff',borderBottom:'#b12d33 solid 3px'});
-            //$('a').css({color:'#b12d33'});
-        }
-        else {
-            //$('#navbar').css({background:'none',borderBottom:'#fff solid 3px'});
-            //$('a').css({color:'#fff'});
-        }
-        });
-        function signup() {
-          
-          return new Promise((resolve, reject) => {
-            var fname = $('input[name=fname]').val();
-            var lname = $('input[name=lname]').val();
-            var email = $('input[name=email]').val();
-            var key = firebase.database().ref().child('/signups').push().key;
-            var dRef = firebase.database().ref('/signups/'+key).set({
-              firstName:fname,
-              lastName:lname,
-              emailAddress:email,
-              signupDate:Date()
-            }, submitResolve());
-          });
-        }
-        
-        function submitResolve() {
-          $('#signupForm').hide();
-          $('#completeSubmit').show();
-        }
-        
-var config = {
-  apiKey: "AIzaSyBlSw_9_7ZULMKT62cQrl4zbgz6_oSQi1Q",
-  authDomain: "rutrep-27e19.firebaseapp.com",
-  databaseURL: "https://rutrep-27e19.firebaseio.com/",
-  projectId: "rutrep-27e19",
-  storageBucket: "rutrep-27e19.appspot.com",
-};
-firebase.initializeApp(config);
-
-</script>
-  
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-28810488-8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-
-  gtag('config', 'UA-28810488-8');
-</script>
-
   </body>
 </html>
