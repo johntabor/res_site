@@ -2,6 +2,10 @@
     font-family: Avenir;
     src: url('avenir.otf');
 }
+@font-face {
+    font-family: Roboto;
+    src: url('roboto.ttf');
+}
 
 * {
     margin: 0;
@@ -14,7 +18,11 @@ body {
     overflow-x: hidden;
 }
 h1 {
-    font-family: Avenir;
+    padding: 7vh;
+    color: black;
+    font-size: 5vw;
+    font-family: Roboto;
+    text-align: center;
 }
 
 #s1 {
@@ -33,6 +41,7 @@ h1 {
     h1 {
         color: #fff;
         padding-top: 5vh;
+        font-family: Avenir;
     }
     img {
         width: 15vw;
@@ -47,22 +56,89 @@ h1 {
         }
         h1 {
             padding: 5px;
-            
             text-align: left;
             font-size: 20px;
         }
     }
 }
 
-#s2 {
+#inter {
     background: #c7c7c7;
-    -webkit-clip-path: polygon(0 9%, 100% 0, 100% 100%, 0 100%);
-    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 95%, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 95%, 100% 0, 100% 100%, 0 100%);
     opacity: 0.85;
     margin-top: -10vh;
-    h1 {
-        padding-top: 15vh;
-        color: black;
-        font-size: 5vw;
+    height: 10vh;
+}
+
+#s2 {
+    width: 80vw;
+    margin: auto;
+    min-height: 65vh;
+    padding: 0 2%;
+    p {
+        font-family: Roboto;
+        font-size: 24px;
     }
+    border-bottom: 1px solid #bdbdbd;
+}
+
+#s3 {
+    width: 100vw;
+    text-align: center;
+    .card {
+        width: 23vw;
+        height: 70vh;
+        border: 1px solid #c7c7c7;
+        box-shadow: 2px 4px 12px #c7c7c7;
+        margin: 12px;
+        float: left;
+        border-radius: 2px;
+        margin-bottom: 100px;
+        h1 {
+            margin: 0;
+            padding: 1vh;
+            font-size: 3vw;
+            color: #555555;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+    p {
+        margin: 0 5% 5% 5%;
+        font-family: Roboto;
+        font-size: 2.2vw;
+      }
+}
+
+#s4 {
+    text-align: center;
+    .profilePic {
+        background-color: #cccccc;
+        margin: 20px auto;
+        border-radius: 900px;
+        width: 80%;
+    }
+    .profilePicDir {
+        width: 16vw;
+        height: 16vw;
+    }
+    h3 {
+        font-family: Avenir;
+    }
+    .pTitle {
+        font-size: 20px;
+        color: #c7c7c7;
+        text-align: center;
+    }
+    .associate {
+        margin-top: 20px;
+    }
+    .row {
+        width:100vw;
+        height: 40vh;
+    }
+    .col-6 { width: 50%; float: left; }
+    .col-4 { width: 33.33%; float: left; }
 }

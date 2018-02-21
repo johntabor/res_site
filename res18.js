@@ -10,4 +10,4 @@ firebase.initializeApp(config);
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments)};
 gtag('js', new Date());
-gtag('config', 'UA-28810488-8');
+gtag('config', 'GET_ANALYTICS_KEY');
