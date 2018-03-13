@@ -16,14 +16,14 @@
       {
         "source" : "/events",
         "destination" : "/event",
-        "type" : "301"
+        "type" : 301
       },
       {
         "source" : "/EVENT",
         "destination" : "/event",
-        "type" : "301"
+        "type" : 301
       }
-      ]
+      ],
     "headers" : [ 
       {
         "source" : "**/*.@(csv|tsv|xlsx)",
