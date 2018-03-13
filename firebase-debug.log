@@ -1,0 +1,32 @@
+[debug] [2018-03-13T21:00:24.069Z] ----------------------------------------------------------------------
+[debug] [2018-03-13T21:00:24.072Z] Command:       C:\ProgramFilesNic\Node\node.exe C:\Users\Nicholas\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-03-13T21:00:24.072Z] CLI Version:   3.13.1
+[debug] [2018-03-13T21:00:24.072Z] Platform:      win32
+[debug] [2018-03-13T21:00:24.072Z] Node Version:  v6.11.4
+[debug] [2018-03-13T21:00:24.073Z] Time:          Tue Mar 13 2018 17:00:24 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-13T21:00:24.073Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-03-13T21:00:24.118Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-03-13T21:00:24.119Z] > authorizing via signed-in user
+[debug] [2018-03-13T21:00:24.122Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-03-13T21:00:24.122Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/6eB4QoR28BBzvzfNO_Z_DA9CgspgCupW6hFna2HaLXY',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Mar 13 2018 17:00:24 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-13T21:00:24.424Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-13T21:00:24.432Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/rutrep-27e19  
+ Tue Mar 13 2018 17:00:24 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-13T21:00:26.300Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-13T21:00:26.301Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/rutrep-27e19/tokens  
+ Tue Mar 13 2018 17:00:26 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-13T21:00:26.696Z] <<< HTTP RESPONSE 200
+[info] 1
+[info] 
+[info] === Deploying to 'rutrep-27e19'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing / directory for upload...
+[debug] [2018-03-13T21:00:31.983Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/rutrep-27e19/uploads/-L7W9WCB4mk76qsHYKE1?fileCount=452&message=  
+ Tue Mar 13 2018 17:00:31 GMT-0400 (Eastern Daylight Time)
