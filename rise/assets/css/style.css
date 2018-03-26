@@ -556,7 +556,35 @@ a {
   background-color: #003a6980;
   width: 50%;
 }
-
+#partner1::before, #partner2::before, #partner3::before, #partner4::before, #partner5::before {
+  background: none;
+  content: "";
+}
+#partner1 {
+  width: 100px;
+  height: 100px;
+  background: url('../images/msstudentpartners.png') left/100% no-repeat;
+}
+#partner2 {
+  width: 100px;
+  height: 100px;
+  background: url('../images/ramenworks.png') left/100% no-repeat;
+}
+#partner3 {
+  width: 100px;
+  height: 100px;
+  background: url('../images/setonhall.jpg') left/100% no-repeat;
+}
+#partner4 {
+  width: 100px;
+  height: 100px;
+  background: url('../images/tedx.png') left/100% no-repeat;
+}
+#partner5 {
+  width: 100px;
+  height: 100px;
+  background: url('../images/rad.png') left/100% no-repeat;
+}
 @media only screen and (max-width: 666px) {
   #timeaddr {
     width: 100%;
