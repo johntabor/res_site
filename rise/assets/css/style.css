@@ -560,30 +560,39 @@ a {
   background: none;
   content: "";
 }
+.de-la-caridad {
+  width: 100px !important;
+  height: 100px !important;
+}
 #partner1 {
-  width: 100px;
-  height: 100px;
   background: url('../images/msstudentpartners.png') left/100% no-repeat;
 }
 #partner2 {
-  width: 100px;
-  height: 100px;
   background: url('../images/ramenworks.png') left/100% no-repeat;
 }
 #partner3 {
-  width: 100px;
-  height: 100px;
   background: url('../images/setonhall.jpg') left/100% no-repeat;
 }
 #partner4 {
-  width: 100px;
-  height: 100px;
   background: url('../images/tedx.png') left/100% no-repeat;
 }
 #partner5 {
-  width: 100px;
-  height: 100px;
   background: url('../images/rad.png') left/100% no-repeat;
+}
+#partner6 {
+  background: url('../images/corr.png') left/100% no-repeat;
+}
+#partner7 {
+  background: url('../images/ruconsulting.png') left/100% no-repeat;
+}
+#partner8 {
+  background: url('../images/rutgersvcc.jpg') left/100% no-repeat;
+}
+#partner9 {
+  background: url('../images/womenbuild.png') left/100% no-repeat;
+}
+#partner10 {
+  background: url('../images/makeprinceton.png') left/100% no-repeat;
 }
 @media only screen and (max-width: 666px) {
   #timeaddr {
