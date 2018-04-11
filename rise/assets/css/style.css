@@ -594,6 +594,11 @@ a {
 #partner10 {
   background: url('../images/makeprinceton.png') left/100% no-repeat;
 }
+#workshops h4, #faq em {
+  text-decoration: underline #ecc3bf;
+}
+
+
 @media only screen and (max-width: 666px) {
   #timeaddr {
     width: 100%;
