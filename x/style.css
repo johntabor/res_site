@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+body {
+    background: black;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+.splash {
+    color: white;
+    font-family: 'Lato';
+    margin: 10%;
+}
+a, a h1 {
+    color: #e9eeaf !important;
+    margin-top: 0 !important;
+}
+
+#bar {
+    background-color: #e9eeaf;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 0;
+}
