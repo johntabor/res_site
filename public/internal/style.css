@@ -1,0 +1,95 @@
+body {
+    overflow: hidden;
+}
+
+div.tbody {
+	margin-top: 10%;
+	text-align: center;
+}
+
+#logo {
+	width: 75px;
+	height: 75px;
+	text-align: center;
+}
+
+h1 {
+    font-family: georgia;
+    color: #000;
+    font-size: 70px;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+h3 {
+    font-family: georgia;
+    color: #000;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-left: 40px;
+}
+
+#submit:hover {
+	background-color: #28d016;
+}
+
+#rlog {
+	color: #808080;
+	position: absolute;
+	margin-left: 70px;
+	padding-top: 12px;
+}
+
+#rlog1 {
+	font-style: italic;
+	color: #808080;
+	
+}
+
+#rloge {
+	display: none;
+}
+
+
+@media screen and (max-width: 760px) {
+    div.tbody {
+    	text-align: center;
+    	width: 85%;
+    	margin: 35% auto;
+    }
+    #logo {
+    	width: 75px;
+    	height: 75px;
+    	text-align: center;
+    	border-radius: 6px;
+    }
+    h1 {
+        font-family: georgia;
+        color: #000;
+        font-size: 70px;
+        margin-top: 50px;
+        margin-left: 40px;
+    }
+    h3 {
+        font-family: georgia;
+        color: #000;
+        font-size: 20px;
+        margin-top: 0px;
+        margin-left: 40px;
+    }
+    input.box {
+        width: 100%;
+        height: 60px;
+        font-size: 24px;
+    }
+    input.button, #submit {
+        float: right;
+        width: 100px;
+        height: 45px;
+    }
+    #rlog {
+    	color: #808080;
+    	position: initial;
+    	float: right;
+    }
+}

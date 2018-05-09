@@ -1,0 +1,22 @@
+html
+    head
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        title Login to RES
+        link(rel="icon" type="image/svg" href="/icon.png")
+        script(src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        link(rel="stylesheet" href="/internal/auth.css")
+    body
+        div#block
+        img(src="/icon.png" alt="logo" id="logo")
+        p#login_error(style="color:red;display:none;") There was an error signing you in. Please try again.</p>
+            form(action="javascript:loginNow();")
+                input(type="text" name="uid" id="uid" class="box" placeholder="username")
+                br
+                br
+                input(type="password" name="pwd" id="pwd" class="box" placeholder="password")
+                br
+                br
+                input(type="submit" value="Login" id="submit" style="cursor:pointer;")
+                input(type="button" value="Signup" id="submit" style="cursor:pointer;" onclick="registerNow()")
+        script(src="/internal/auth.js")

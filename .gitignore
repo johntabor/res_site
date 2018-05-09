@@ -1,0 +1,9 @@
+**/node_modules
+
+/rise_base
+/rise17
+
+*.otf
+*.ttf
+*.map
+
