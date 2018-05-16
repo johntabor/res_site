@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/",
+    "public": "public/",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,8 +12,16 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/",
         "destination": "/index.html"
+      },
+      {
+        "source": "/in",
+        "function": "internal"
+      },
+      {
+        "source": "/in/**",
+        "function": "internal"
       }
     ],
     "redirects" : [
@@ -41,5 +49,8 @@
         }
       ]
     } ]
+  },
+  "functions": {
+    "source": "server/"
   }
 }

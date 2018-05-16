@@ -1,0 +1,35 @@
+html
+	head
+		title RES Portal
+		link(rel="icon" type="image/png" href="/icon.png")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(rel='stylesheet' href='/internal/style.css' type='text/css')
+		link(rel='stylesheet' href='/internal/menu.css' type='text/css')
+		script(defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous")
+	body
+		div#header
+			img#logo(src='/icon.png')
+			img#menu_launcher(src='/internal/menu.png')
+			div#menu
+				li
+					i(class='fas fa-eye')
+					a(href=''): p Visit Your Page
+				li
+					i(class='fas fa-th')
+					a(href='/a/dash/table'): p View Orders
+				li
+					i(class='fas fa-hand-holding-usd')
+					a(href='#'): p Your Fundraisers
+				li
+					i(class='fas fa-cog')
+					p Settings
+				li
+					i(class='fas fa-sign-out-alt')
+					a(href='javascript:SM.signOut()'): p Logout
+		div#root
+
+		</div>
+		div#loading(style='display:none;')
+			img(src='/internal/loading.png')
+			p Beaming down content...
+	script(src='internal/script.js')
