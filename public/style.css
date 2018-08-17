@@ -11,7 +11,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -57,7 +58,8 @@ h1 {
 
 #s1 a {
   text-decoration: none;
-  text-decoration-color: white;
+  -webkit-text-decoration-color: white;
+          text-decoration-color: white;
 }
 
 #s1 a :hover {
@@ -103,7 +105,8 @@ h1 {
   width: 23vw;
   height: 70vh;
   border: 1px solid #c7c7c7;
-  box-shadow: 2px 4px 12px #c7c7c7;
+  -webkit-box-shadow: 2px 4px 12px #c7c7c7;
+          box-shadow: 2px 4px 12px #c7c7c7;
   margin: 8px;
   float: left;
   border-radius: 2px;
@@ -202,4 +205,3 @@ h1 {
     display: none;
   }
 }
-/*# sourceMappingURL=style.css.map */

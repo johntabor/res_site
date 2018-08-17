@@ -1,26 +1,106 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200");
 body {
-    background: black;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
+  background: black;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  z-index: 0;
 }
+
+h1 {
+  font-family: 'Lato';
+}
+
+#logo {
+  margin: 30px 0 0 30px;
+  font-size: 22px;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#cursor {
+  -webkit-animation: blink 2s infinite;
+          animation: blink 2s infinite;
+}
+
+#logo h1 {
+  color: #242424;
+}
+
 .splash {
-    color: white;
-    font-family: 'Lato';
-    margin: 10%;
+  color: white;
+  margin: 7%;
 }
-a, a h1 {
-    color: #e9eeaf !important;
-    margin-top: 0 !important;
+
+.link {
+  color: #eeafce !important;
+  margin-top: 0 !important;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 30%;
 }
 
 #bar {
-    background-color: #e9eeaf;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    width: 0;
+  background-color: #eeafce;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 0;
+}
+
+#info {
+  width: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #eeafce;
+  min-height: 100vh;
+  text-align: center;
+}
+
+#info input[type='text'], #info input[type='submit'] {
+  border: none;
+  border-bottom: 2px solid black;
+  width: 80%;
+  height: 40px;
+  font-size: 28px;
+  font-family: 'Montserrat';
+  margin: 10% auto;
+  background: none;
+}
+
+#info input[type='submit'] {
+  width: 20%;
+  border: 2px solid black;
+  margin-top: 1%;
+}
+
+#info h1 {
+  font-family: 'Montserrat' !important;
 }

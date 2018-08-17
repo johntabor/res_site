@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,19 +8,28 @@
         <meta property="og:title" content="RESx | Rutgers Entrepreneurial Society" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="http://www.rutrep.com/x" />
-        <meta property="og:image" content="/icon.png" />
+        <meta property="og:image" content="resx.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="/icon.png">
-        <meta name="description" content="The RESx startup accelerator is run by the Rutgers Entrepreneurial Society with the sole goal of providing an environment for Rutgers startups to succeed." />
+        <meta name="description" content="The Rutgers Entrepreneurial Society aims to bring value to the Rutgers ecosystem by providing access to speaker series, conferences, people, and capital for entrepreneuers." />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28810488-8"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+        <div id="logo"><h1>&lt;RESx /&gt;<span id="cursor">__</span></h1></div>
         <div id="bar"></div>
-        <h1 class="splash">Not long ago, there was no place for entrepreneurs. There was no network, no advice, and certainly no money. But as entrepreneurs, we wanted to change that. So we started RESx, a program run by the Rutgers Entrepreneurial Society dedicated to helping Rutgers startups succeed. Want to join?</h1><br>
-        <a href="javascript:join();"><h1 class="splash link">Just tell us your idea.</h1></a>
+        <h1 class="splash">Not long ago, finding a place to be an entrepreneur at Rutgers was hard. There was no network, no advice, and certainly no money. As entrepreneurs, we wanted to fix that. So we started RESx, a program run by the Rutgers Entrepreneurial Society dedicated to helping Rutgers startups succeed. Want to join?</h1><br>
+        <h1 class="splash link">Just tell us your idea.</h1>
+        <div id="info" class="info">
+            <h1 class="info">We're the Rutgers Entrepreneurial Society,</h1>
+            <h1 class="info">And we want to help you.</h1>
+            <form action="javascript:submit()">
+                <input type="text" name="pitch" placeholder="Give us your one sentence pitch">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
         <script src="script.js"></script>
     </body>
     </html>

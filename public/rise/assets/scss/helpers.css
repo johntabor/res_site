@@ -101955,7 +101955,7 @@
 }
 
 .probootstrap_color-dark-opacity-0 {
-  color: transparent !important;
+  color: rgba(0, 0, 0, 0) !important;
 }
 
 .probootstrap_color-dark-opacity-1 {
@@ -102043,7 +102043,8 @@
 }
 
 .probootstrap_shadow-none {
-  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .text-serif {
@@ -102221,4 +102222,3 @@
 .probootstrap_w-45 {
   width: 45%;
 }
-/*# sourceMappingURL=helpers.css.map */
