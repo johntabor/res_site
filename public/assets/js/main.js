@@ -83,5 +83,17 @@
 })(jQuery);
 
 function signuprevolver() {
-	
+	$('#banner > .inner > ul > li').fadeOut(500)
+	$('#banner > .inner > ul > form').delay(500).fadeIn(300)
+}
+
+function signupWithEmail() {
+		$('[name=signupEmail]').css('color', 'gray').attr('disabled', 'true')
+		let addr = $('[name=signupEmail]').val()
+	$.get('https://us-central1-rutrep-27e19.cloudfunctions.net/internal/subscribe/'+addr).then(r => {
+		$('#banner > .inner > ul > form').fadeOut(500)
+		$('#banner > .inner > ul > h3').delay(500).fadeIn(300)
+	}).catch(e => {
+		$('[name=signupEmail]').css('color', 'red').removeAttr('disabled').val(addr + ' ⚠')
+	})
 }

@@ -8,5 +8,8 @@
 *.map
 
 **/.firebaserc
+**/.firebase
+
 *.css
 *.map.css
+

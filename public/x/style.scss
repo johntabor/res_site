@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200');
 $tint: #eeafce;
+* {
+    outline: none;
+}
 body {
     background: black;
     width: 100vw;
@@ -54,25 +57,62 @@ h1 {
     right: 0;
     z-index: 100;
     background-color: $tint;
-    min-height: 100vh;
+    height: 100vh;
     text-align: center;
-    input[type='text'] {
+    overflow-y: scroll;
+    input {
         border: none;
         border-bottom: 2px solid black;
         width: 80%;
         height: 40px;
         font-size: 28px;
         font-family: 'Montserrat';
-        margin: 10% auto;
+        margin: 4% auto;
         background: none;
     }
     input[type='submit'] {
-        @extend input[type='text'];
+        @extend input;
         width: 20%;
         border: 2px solid black;
         margin-top: 1%;
     }
+    input[type='submit']:hover {
+        background-color: black;
+        color: $tint;
+    }
+    h1 {
+        font-family: 'Montserrat' !important;
+    }
+    p {
+        @extend h1;
+        font-size: 18px !important;
+        margin: 4% 14%;
+    }
+    a {
+        @extend p;
+        color: black;
+        margin: 0;
+    }
 }
-#info h1 {
-    font-family: 'Montserrat' !important;
+
+@media only screen and (max-width:700px) {
+    body {
+        overflow-y: scroll;
+    }
+    .link {
+        width: 90%;
+    }
+    #info {
+        height: 150vh;
+        h1 {
+            font-size: 24px;
+        }
+        input {
+            font-size: 20px;
+            width: 90% !important;
+        }
+        input[type='submit'] {
+            width: 60% !important;
+        }
+    }
 }

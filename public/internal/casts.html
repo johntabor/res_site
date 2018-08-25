@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Internal Tools | RES</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <style type="text/css">
+        p {
+            display:inline;
+        }
+        a {
+            margin-top:10px;
+        }
+        input {
+            width: 36%;
+        }
+    </style>
+</head>
+<body>
+  <form action="javascript:loginNow()" id="loginForm">
+        <p>Login with supplied credentials below to access tool</p><br><br>
+        <input type="email" name="email" placeholder="email" />
+        <input type="password" name="pwd" placeholder="password" />
+        <input type="submit" value="Submit" />
+  </form>
+  <p id="login_error" style="display:none;">Invalid credentials</p>
+  
+  <div id="manager">
+      <button id="logOut" onClick="firebase.auth().signOut()">Sign Out</button>
+      <br><br>
+      <form action="generate()">
+        <input type="file" id="file" />
+      </form>
+      <br><br>
+      <form action="generate()">
+        <label>Episode Name: <input type="text" name="title" /></label><br><br>
+        <label>Description: <input type="text" name="description" /></label><br><br>
+        <label>Categories: <input type="text" name="categories" /></label><br><br>
+        <label>Date: <input type="text" name="date" /></label><br><br>
+        <label>Episode Name: <input type="text" name="" /></label><br><br>
+        <label>Episode Name: <input type="text" name="" /></label><br><br>
+        <label>Link: <input type="text" name="url" /></label><br><br>
+        <input type="submit" value="Generate" />
+      </form>
+  </div>
+  
+  
+<script type="text/javascript">
+    /*global firebase,$,jQuery*/
+    var config = {
+        apiKey: "AIzaSyBlSw_9_7ZULMKT62cQrl4zbgz6_oSQi1Q",
+        authDomain: "rutrep-27e19.firebaseapp.com",
+        databaseURL: "https://rutrep-27e19.firebaseio.com/",
+        projectId: "rutrep-27e19",
+        storageBucket: "rutrep-27e19.appspot.com",
+    };
+    firebase.initializeApp(config);
+    const dbRef = firebase.database().ref('/podcasts');
+    const stRef = firebase.storage().ref('/podcasts');
+    const authy = firebase.auth();
+
+    function loginNow() {
+    var email = $('input[name=email]').val();
+    var password = $('input[type=password][name=pwd]').val();
+    authy.signInWithEmailAndPassword(email, password).catch(function(error) {
+        $('#login_error').css({'display':'block'});
+    });
+    }
+    authy.onAuthStateChanged(user => {
+        if(user){
+            $('#loginForm').hide()
+            $('#manager').show()
+            listener();
+        }
+        else {
+        $('#manager').hide()
+        }
+    });
+
+    $(':file').on('change', file => {
+    $('<p id="uploading">Uploading audio file...</p>').insertAfter(':file')
+    var newUpload = document.querySelector('#file').files[0]
+    var stChild = stRef.child('/'+newUpload.name)
+    stChild.put(newUpload).then(e => {
+        $('#uploading').hide()
+        $('<p>File successfully uploaded</p>').insertAfter(':file')
+        stRef.child(newUpload.name).getDownloadURL().then((url) => {
+            $('[name=url]').val(url);
+          })
+    })
+    })
+    function generate() {
+        let xml = rss(formData) //import 'rss'
+        var stChild = stRef.child('/'+rss+'.xml')
+        stChild.putString(xml).then(e => {
+            $('#uploading').hide()
+            $('<p>File successfully uploaded</p>').insertAfter(':file')
+            stRef.child(newUpload.name).getDownloadURL().then((url) => {
+                $('[name=url]').val(url);
+            })
+        })
+    }
+</script>
+  </body>
+  </html>
+
+
+
+

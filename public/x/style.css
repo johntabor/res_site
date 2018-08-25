@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200");
+* {
+  outline: none;
+}
+
 body {
   background: black;
   width: 100vw;
@@ -9,7 +13,7 @@ body {
   z-index: 0;
 }
 
-h1 {
+h1, #info p, #info a {
   font-family: 'Lato';
 }
 
@@ -47,7 +51,7 @@ h1 {
           animation: blink 2s infinite;
 }
 
-#logo h1 {
+#logo h1, #logo #info p, #info #logo p, #logo #info a, #info #logo a {
   color: #242424;
 }
 
@@ -80,18 +84,19 @@ h1 {
   right: 0;
   z-index: 100;
   background-color: #eeafce;
-  min-height: 100vh;
+  height: 100vh;
   text-align: center;
+  overflow-y: scroll;
 }
 
-#info input[type='text'], #info input[type='submit'] {
+#info input, #info input[type='submit'] {
   border: none;
   border-bottom: 2px solid black;
   width: 80%;
   height: 40px;
   font-size: 28px;
   font-family: 'Montserrat';
-  margin: 10% auto;
+  margin: 4% auto;
   background: none;
 }
 
@@ -101,6 +106,43 @@ h1 {
   margin-top: 1%;
 }
 
-#info h1 {
+#info input[type='submit']:hover {
+  background-color: black;
+  color: #eeafce;
+}
+
+#info h1, #info p, #info a {
   font-family: 'Montserrat' !important;
+}
+
+#info p, #info a {
+  font-size: 18px !important;
+  margin: 4% 14%;
+}
+
+#info a {
+  color: black;
+  margin: 0;
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    overflow-y: scroll;
+  }
+  .link {
+    width: 90%;
+  }
+  #info {
+    height: 150vh;
+  }
+  #info h1, #info p, #info a {
+    font-size: 24px;
+  }
+  #info input, #info input[type='submit'] {
+    font-size: 20px;
+    width: 90% !important;
+  }
+  #info input[type='submit'] {
+    width: 60% !important;
+  }
 }
