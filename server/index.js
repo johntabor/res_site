@@ -29,10 +29,10 @@ app.get('/subscribe/:email', (req,res) => {
     res.set('Access-Control-Allow-Origin', '*')
     let post = {"email_address": req.params.email, "status": "subscribed"}
     request.post({
-        url: 'https://us19.api.mailchimp.com/3.0/lists/e7#######a7/members',
+        url: 'https://us19.api.mailchimp.com/3.0/lists/#e7#####a7/members', //do not commit list id     #e7#####a7
         auth: {
             user: 'rocky',
-            pass: '###############################'
+            pass: '######################' // do not commit     ######################
         },
         headers: {
             'content-type': 'application/json; charset=UTF-8'
@@ -40,7 +40,7 @@ app.get('/subscribe/:email', (req,res) => {
         json: post
     }, function(err, httpR, body) {
         if(err === 'null')
-            res.status(201)
+            res.sendStatus(201)
         else
             res.send(err)
         })
@@ -73,7 +73,7 @@ app.get('/x/new/:email/:pitch', (req,res) => {
         }
         else {
           console.log('Email sent: ' + info.response)
-          res.status(201)
+          res.sendStatus(201)
         }
       })
 
