@@ -13,3 +13,5 @@
 **/*.css
 **/.map.css
 *.css
+
+**/env.js

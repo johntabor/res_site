@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>RESx | Portal</title>
+    <link rel="icon" type="image/svg" href="../resx.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+    <div id="sbar">
+        <h1>&lt; /&gt;</h1>
+        <a href="https://resx18.slack.com"><i link="" class="fab fa-slack" title="Slack"></i></a>
+        <i link="resources" class="fas fa-book-open" title="Resources"></i>
+        <i link="meetings" class="fas fa-users" title="Schedule 1-on-1"></i>
+        <a href="https://calendar.google.com/calendar?cid=c2NhcmxldG1haWwucnV0Z2Vycy5lZHVfYm5pZm82dGYya2I0amtiaWV1aDNoa3RwMHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"><i link="" class="fas fa-calendar-alt" title="Calendar"></i></a>
+        <!-- -->
+        <i link="" class="fas fa-arrow-alt-circle-left" title="Logout" onClick="logout()"></i>
+    </div>
+    <div class="content" id="home">
+        <h2 id="welcome">Welcome</h2><br>
+        <p>Use the menu to navigate</p>
+    </div>
+    <div class="content" id="resources">
+        <h2 id="resAnchor" wk='0'>Resources</h2><br>        
+    </div>
+      <div class="content" id="meetings">
+        <h2 id="resAnchor" mt='0'>1-on-1 Meetings</h2><br>        
+    </div>
+
+
+
+<script type="text/javascript">
+  /*global firebase,$,jQuery*/
+  let mSel, rSel = false
+  var config = {
+    apiKey: "AIzaSyBlSw_9_7ZULMKT62cQrl4zbgz6_oSQi1Q",
+    authDomain: "rutrep-27e19.firebaseapp.com",
+    databaseURL: "https://rutrep-27e19.firebaseio.com/",
+    projectId: "rutrep-27e19",
+    storageBucket: "rutrep-27e19.appspot.com",
+  };
+  firebase.initializeApp(config);
+  const dbRef = firebase.database().ref('/x')
+  const stRef = firebase.storage().ref('/x')
+  const authy = firebase.auth();
+  
+  authy.onAuthStateChanged(user => {
+      if(!user) {
+          location.replace('auth.html')
+      }
+      else {
+          $('body, #home').show()
+      }
+  })
+  function getRes() {
+      dbRef.once('value').then(snapshot => {
+      let table = snapshot.val()
+      console.log(table.resources)
+      var wk = 1
+      _.forEach(table.resources, child => {
+          $(`#resources`).append(`<h3 wk='${wk}'>Week ${wk}</h3>`)
+          _.forEach(child, ichild => {
+            var rs = ichild.link
+            var tm = ichild.type
+            var na = ichild.name
+            $(`[wk='${wk}']`).after(`<i class="fas ${tm}" ></i> <a href="${rs}"><p> ${na}</p></a><br>`)
+          })
+          wk++
+      })
+      }) 
+      rSel = true
+  }
+
+  function getMet() {
+      dbRef.child('times').once('value').then(snapshot => {
+      let table = snapshot.val()
+      console.log(table)
+      var mt = 0
+      _.forEach(table, child => {
+            var st = child.start
+            var en = child.end
+            var na = child.open
+            var by = child.by || null
+            var dt = child.date
+            $(`[mt='0']`).after(`<i class="fas fa-clock" ></i> <p><b>${dt}:</b> ${st} - ${en}</p><button ${(!na && by != authy.currentUser.email) ? "style='background:gray;'" : `onclick='setMet(${mt},${na})'`} open='${na}'>${(by == authy.currentUser.email) ? 'Drop' : na ? 'Take': 'Taken'}</button><br>`)
+            mt++
+          })
+          
+        })
+      mSel = true
+  }
+
+    $('#sbar > i').click(function() {
+        let t = $(this).attr('link')
+        $('.content').hide()
+        $(`#${t}`).show()
+        switch (t) {
+            case 'resources':
+                rSel ? null : getRes()
+                break;
+            case 'meetings':
+                mSel ? null : getMet()
+                break;
+        }
+    })
+
+    function setMet(m,d) {
+        if(d) {
+            console.log('taking')
+            dbRef.child('times/'+m).update({
+                open: false,
+                by: authy.currentUser.email
+            })
+        }
+        else {
+            console.log('dropping')
+            dbRef.child('times/'+m).update({
+                open: true,
+                by: null
+            })
+        }
+        $('#meetings > [id!="resAnchor"]').remove()
+        getMet()
+       
+    }
+
+    function logout() {
+        authy.signOut()
+    }
+    setInterval(() => location.reload(), 3600000)
+</script>
+  </body>
+  </html>
+
+
+
+

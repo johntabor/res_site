@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Internal Tools | RES</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
     <style type="text/css">p{display:inline;}a{margin-top:10px;}</style>
 </head>
 <body>
@@ -28,57 +28,57 @@
     databaseURL: "https://rutrep-27e19.firebaseio.com/",
     projectId: "rutrep-27e19",
     storageBucket: "rutrep-27e19.appspot.com",
-  };
-  firebase.initializeApp(config);
-  const dbRef = firebase.database().ref('/people');
-  const stRef = firebase.storage().ref('/people');
-  const authy = firebase.auth();
+  }
+  firebase.initializeApp(config)
+  const dbRef = firebase.database().ref('/people')
+  const stRef = firebase.storage().ref('/people')
+  const authy = firebase.auth()
   
   function loginNow() {
-    var email = $('input[name=email]').val();
-    var password = $('input[type=password][name=pwd]').val();
+    var email = $('input[name=email]').val()
+    var password = $('input[type=password][name=pwd]').val()
     authy.signInWithEmailAndPassword(email, password).catch(function(error) {
-      $('#login_error').css({'display':'block'});
-    });
+      $('#login_error').css({'display':'block'})
+    })
   }
   authy.onAuthStateChanged(user => {
       if(user){
-        $('#manager').show();
-        getData();
+        $('#manager').show()
+        getData()
       }
       else {
-        $('#manager').hide();
+        $('#manager').hide()
       }
-  });
+  })
   function getData() {
       dbRef.once('value', (snapshot) => {
-      var table = snapshot.val();
-      console.log(table);
-      var startAnchor = $('#logOut');
+      var table = snapshot.val()
+      console.log(table)
+      var startAnchor = $('#logOut')
       snapshot.forEach(childSnap => {
-        var val = childSnap.val().name;
-        console.log(val);
-        $('<br><br><p>'+val+' </p><a href="#" id="'+childSnap.key+'">Change Picture</a>').insertAfter('#logOut');
-      });
-      clickListener();
-      });
+        var val = childSnap.val().name
+        console.log(val)
+        $('<br><br><p>'+val+' </p><a href="#" id="'+childSnap.key+'">Change Picture</a>').insertAfter('#logOut')
+      })
+      clickListener()
+      })
       
   }
   function clickListener() {
       $('a').on('click', event => {
-          var objId = event.target.getAttribute('id');
-          console.log(objId);
-          $(' <input name="file" type="file" id="file_'+objId+'">').insertAfter('#'+objId);
+          var objId = event.target.getAttribute('id')
+          console.log(objId)
+          $(' <input name="file" type="file" id="file_'+objId+'">').insertAfter('#'+objId)
           $(':file').on('change', file => {
-              $('<p id="uploading">Uploading image...</p>').insertAfter(':file');
-              var newUpload = document.querySelector('#file_'+objId).files[0];
-              var stChild = stRef.child('/'+objId+'.png');
+              $('<p id="uploading">Uploading image...</p>').insertAfter(':file')
+              var newUpload = document.querySelector('#file_'+objId).files[0]
+              var stChild = stRef.child('/'+objId+'.png')
               stChild.put(newUpload).then(e => {
-                  $('#uploading').hide();
-                  $('<p>You successfully changed your image</p>').insertAfter(':file');
-              });
-          });
-      });
+                  $('#uploading').hide()
+                  $('<p>You successfully changed your image</p>').insertAfter(':file')
+              })
+          })
+      })
   }
 </script>
   </body>

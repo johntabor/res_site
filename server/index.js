@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const mailer = require('nodemailer')
 const request = require('request')
+const env = require('./env.js') //aka 'KEYS.js'
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,10 +30,10 @@ app.get('/subscribe/:email', (req,res) => {
     res.set('Access-Control-Allow-Origin', '*')
     let post = {"email_address": req.params.email, "status": "subscribed"}
     request.post({
-        url: 'https://us19.api.mailchimp.com/3.0/lists/e7#######a7/members',
+        url: `https://us19.api.mailchimp.com/3.0/lists/${env.mc_listid}/members`,
         auth: {
-            user: 'rocky',
-            pass: '###############################'
+            user: env.mc_user,
+            pass: env.mc_apikey
         },
         headers: {
             'content-type': 'application/json; charset=UTF-8'
@@ -40,7 +41,7 @@ app.get('/subscribe/:email', (req,res) => {
         json: post
     }, function(err, httpR, body) {
         if(err === 'null')
-            res.status(201)
+            res.sendStatus(201)
         else
             res.send(err)
         })
