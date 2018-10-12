@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Internal Tools | RES</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+    <div id="sbar">
+        <h1>&lt; /&gt;</h1>
+        <a href="https://resx18.slack.com"><i link="" class="fab fa-slack" title="Slack"></i></a>
+        <i link="resources" class="fas fa-book-open" title="Resources"></i>
+        <!-- <i link="" class="fas fa-users" title="Schedule 1-on-1" style="color: #c7c7c7;"></i>
+        <i link="" class="fas fa-calendar-alt" title="Calendar" style="color: #c7c7c7;"></i> -->
+        <i link="" class="fas fa-arrow-alt-circle-left" title="Logout" onClick="logout()"></i>
+    </div>
+    <div class="content" id="home">
+        <h2 id="welcome">Welcome</h2><br>
+        <p>Use the menu to navigate</p>
+    </div>
+    <div class="content" id="resources">
+        <h2>Resources</h2><br>
+        <h3>Week 1</h3><br>
+        <h3>Week 2</h3>
+        <i class="fas fa-file-powerpoint" style="color: #e4b20d;"></i> <a href="https://docs.google.com/presentation/d/1yRp7mxFGyFyZqx3atV20ogY03CDIQMRkFihyWBDqloI/edit?usp=sharing"><p>Startup Fundamentals</p></a>
+    </div>
+  
+<script type="text/javascript">
+  /*global firebase,$,jQuery*/
+  var config = {
+    apiKey: "AIzaSyBlSw_9_7ZULMKT62cQrl4zbgz6_oSQi1Q",
+    authDomain: "rutrep-27e19.firebaseapp.com",
+    databaseURL: "https://rutrep-27e19.firebaseio.com/",
+    projectId: "rutrep-27e19",
+    storageBucket: "rutrep-27e19.appspot.com",
+  };
+  firebase.initializeApp(config);
+  const dbRef = firebase.database().ref('/x');
+  const stRef = firebase.storage().ref('/x');
+  const authy = firebase.auth();
+  
+  authy.onAuthStateChanged(user => {
+      if(!user) {
+          location.replace('auth.html')
+      }
+      else {
+          $('body, #home').show()
+      }
+  });
+  function getData() {
+      dbRef.once('value', (snapshot) => {
+      var table = snapshot.val();
+      console.log(table);
+      var startAnchor = $('#logOut');
+      snapshot.forEach(childSnap => {
+        var val = childSnap.val().name;
+        console.log(val);
+      });
+      clickListener();
+      });
+      
+  }
+    $('#sbar > i').click(function() {
+        let t = $(this).attr('link')
+        $('.content').hide()
+        $(`#${t}`).show()
+    })
+
+    function logout() {
+        authy.signOut()
+    }
+</script>
+  </body>
+  </html>
+
+
+
+

@@ -73,7 +73,7 @@ app.get('/x/new/:email/:pitch', (req,res) => {
         }
         else {
           console.log('Email sent: ' + info.response)
-          res.status(201)
+          res.sendStatus(201)
         }
       })
 
