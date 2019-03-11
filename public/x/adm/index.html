@@ -14,11 +14,11 @@
 
     <div id="sbar">
         <h1>&lt; /&gt;</h1>
-        <a href="https://resx18.slack.com"><i link="" class="fab fa-slack" title="Slack"></i></a>
-        <i link="resources" class="fas fa-book-open" title="Resources"></i>
-        <i link="meetings" class="fas fa-users" title="Schedule 1-on-1"></i>
+        <a href="https://resx19s.slack.com"><i link="" class="fab fa-slack" title="Slack"></i></a>
+        <i link="resources" class="fas fa-file-contract" title="Applications"></i>
+        <!--<i link="meetings" class="fas fa-users" title="Schedule 1-on-1"></i>
         <a href="https://calendar.google.com/calendar?cid=c2NhcmxldG1haWwucnV0Z2Vycy5lZHVfYm5pZm82dGYya2I0amtiaWV1aDNoa3RwMHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"><i link="" class="fas fa-calendar-alt" title="Calendar"></i></a>
-        <!-- -->
+         -->
         <i link="" class="fas fa-arrow-alt-circle-left" title="Logout" onClick="logout()"></i>
     </div>
     <div class="content" id="home">
@@ -26,7 +26,10 @@
         <p>Use the menu to navigate</p>
     </div>
     <div class="content" id="resources">
-        <h2 id="resAnchor" wk='0'>Resources</h2><br>        
+        <h2 id="resAnchor" wk='0'>Applications</h2><br>     
+        <div class='sect'>
+            <span>Pitch:</span>
+        </div>   
     </div>
       <div class="content" id="meetings">
         <h2 id="resAnchor" mt='0'>1-on-1 Meetings</h2><br>        
@@ -101,7 +104,7 @@
         $(`#${t}`).show()
         switch (t) {
             case 'resources':
-                rSel ? null : getRes()
+                rSel ? null : null  //getRes()
                 break;
             case 'meetings':
                 mSel ? null : getMet()
