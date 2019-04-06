@@ -8,7 +8,9 @@
       "**/rise17/**",
       "**/rise_base/**",
       "**/*.scss",
-      "**/*.map"
+      "**/*.map",
+      ".firebase",
+      "event"
     ],
     "rewrites": [
       {
